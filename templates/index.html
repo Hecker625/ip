@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Satisfying Animation</title>
+        <style>
+            body {
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                align-items: left;
+                justify-content: center;
+            }
+            #box {
+                width: 200px;
+                height: 50px;
+                display: flex;
+                justify-content: center; /* horizontal */
+                align-items: center;   
+                background: linear-gradient(to right, #00ff00, #0000ff);
+                border-radius: 100px;
+                display: flex;
+                animation: rotate, slideRight;
+                animation-duration: 5s;
+                animation-direction: alternate;
+                animation-timing-function: linear;
+                animation-iteration-count: infinite;
+                /* opacity: 0; */
+            }
+            #box:hover {
+                animation-play-state: paused, paused,running;
+                animation-name: rotate, slideRight, glow;
+                animation-duration: 5s, 5s, 5s, 5s;
+                animation-direction: alternate;
+                animation-timing-function: linear;
+                animation-iteration-count: infinite;
+            }
+            @keyframes slideRight {
+                to {transform: translateX(1050px);}
+            }
+            @keyframes rotate {
+                50% {transform: rotateZ(180deg);}
+            }
+            @keyframes grow {
+                50% {transform: scale(5,5);}
+            }
+            @keyframes colorChange {
+                50% {background-color: blue;}
+            }
+            @keyframes glow {
+                50% {box-shadow: 0px 0px 50px #f2ff00;}
+            }
+        </style>
+    </head>
+    <body style="background-color: black;">
+        <div>
+            <div id="box">{{ ip }}</div>
+        </div>
+    </body>
+</html>

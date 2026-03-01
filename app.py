@@ -28,11 +28,6 @@ def home():
 
 @app.route("/logs")
 def logs():
-    file = input ("Enter password: ")
-    if file == "ihackedyourip":
-        return send_file("file.txt", as_attachment=True)
+    return send_file("file.txt", as_attachment=True)
         
-    else:
-        pass
-    
 app.run(host="0.0.0.0", port=80)

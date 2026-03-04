@@ -22,16 +22,25 @@ def home():
     now = datetime.now(tz)
     formatted = now.strftime("%m-%d-%Y %I:%M %p %S seconds")
 
-    with open("file.txt", "a") as f:
+    with open("json.txt", "a") as f:
         f.write("\n")
         f.write(formatted)
         f.write(": \n")
         f.write(str(data))
 
+    with open("standard.txt", "a") as f:
+        f.write("\n")
+        f.write(user_ip)
+        f.write(formatted)
+
     return render_template("index.html", ip=user_ip)
 
-@app.route("/logs")
-def logs():
-    return send_file("file.txt", as_attachment=True)
+@app.route("/json")
+def json():
+    return send_file("json.txt", as_attachment=True)
+
+@app.route("/standard")
+def standard():
+    return send_file("standard.txt", as_attachment=True)
     
 app.run(host="0.0.0.0", port=80)
